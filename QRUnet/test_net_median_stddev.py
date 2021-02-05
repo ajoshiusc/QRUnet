@@ -432,7 +432,7 @@ def main():
     )
     parser.add_argument(
         '-n_m', '--net_path_median', type=str,
-        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_median/fnet-50.hdf5',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_0.5/fnet-50.hdf5',
         help="The path to a trained FNet")
     parser.add_argument(
         '-n_ql', '--net_path_ql', type=str,
@@ -478,7 +478,7 @@ def main():
         '-r',
         '--results_dir',
         type=str,
-        default='/ImagePTE1/ajoshi/code_farm/MRI-Reconstruction/submrine/submrine/train/results',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/results',
         help="The base directory to which to write evaluation results")
     parser.add_argument(
         '-e',

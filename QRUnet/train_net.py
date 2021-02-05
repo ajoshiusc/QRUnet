@@ -24,7 +24,7 @@ import tensorflow.keras.backend as kb
 
 
 # Q for quantile regression
-CONST_Q = 0.15
+CONST_Q = 0.5
 
 # Training set construction
 NUM_SAMPLE_SLICES = 35
@@ -86,6 +86,8 @@ class FNet:
 
         print("Network checkpoints will be saved to: '{}'".format(
             checkpoints_dir_path))
+        if not os.path.exists(checkpoints_dir_path):
+            os.makedirs(checkpoints_dir_path)
 
         self.model.fit(
             y_folded,
