@@ -4,14 +4,14 @@ import argparse
 import keras
 import numpy as np
 import json
-from analyze_loader import load_image_data, get_image_file_paths, normalize
-from subsampling import subsample
-from correction import correct_output
-from keras_parallel import multi_gpu_model
-from output import create_output_dir
+from utils.analyze_loader import load_image_data, get_image_file_paths, normalize
+from utils.subsampling import subsample
+from utils.correction import correct_output
+from utils.keras_parallel import multi_gpu_model
+from utils.output import create_output_dir
 
 #import subsample, correct_output, load_image_data, get_image_file_paths, normalize, create_output_dir
-from constants import SLICE_WIDTH, SLICE_HEIGHT
+from utils.constants import SLICE_WIDTH, SLICE_HEIGHT
 
 from matplotlib import pyplot as plt
 from skimage.measure import compare_ssim as ssim
@@ -432,15 +432,15 @@ def main():
     )
     parser.add_argument(
         '-n_m', '--net_path_median', type=str,
-        default='/ImagePTE1/ajoshi/code_farm/MRI-Reconstruction/submrine/submrine/train/trained_nets/qr_median/fnet-50.hdf5',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_median/fnet-50.hdf5',
         help="The path to a trained FNet")
     parser.add_argument(
         '-n_ql', '--net_path_ql', type=str,
-        default='/ImagePTE1/ajoshi/code_farm/MRI-Reconstruction/submrine/submrine/train/trained_nets/qr_0.85/fnet-50.hdf5',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_0.85/fnet-50.hdf5',
         help="The path to a trained FNet")
     parser.add_argument(
         '-n_qu', '--net_path_qu', type=str,
-        default='/ImagePTE1/ajoshi/code_farm/MRI-Reconstruction/submrine/submrine/train/trained_nets/qr_0.15/fnet-50.hdf5',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_0.15/fnet-50.hdf5',
         help="The path to a trained FNet")
     parser.add_argument(
         '-d',

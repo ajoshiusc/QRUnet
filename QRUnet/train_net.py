@@ -2,13 +2,13 @@ import os
 import sys
 import argparse
 import numpy as np
-from analyze_loader import load_image_data, get_image_file_paths, normalize
-from subsampling import subsample
-from correction import correct_output
-from keras_parallel import multi_gpu_model
-from output import create_output_dir
+from utils.analyze_loader import load_image_data, get_image_file_paths, normalize
+from utils.subsampling import subsample
+from utils.correction import correct_output
+from utils.keras_parallel import multi_gpu_model
+from utils.output import create_output_dir
 #import subsampling, load_image_data, multi_gpu_model, get_image_file_paths, create_output_dir
-from constants import SLICE_WIDTH, SLICE_HEIGHT
+from utils.constants import SLICE_WIDTH, SLICE_HEIGHT
 
 from datetime import datetime
 
@@ -76,9 +76,9 @@ class FNet:
         if not self.architecture_exists:
             self._create_architecture()
 
-        checkpoints_dir_path = create_output_dir(base_path=checkpoints_dir,
-                                                 suffix=SFX_NETWORK_CHECKPOINTS,
-                                                 exp_name=None)
+        checkpoints_dir_path = checkpoints_dir #create_output_dir(base_path=checkpoints_dir,
+                                                # suffix=SFX_NETWORK_CHECKPOINTS,
+                                                # exp_name=None)
         checkpoint_fpath_format = os.path.join(
             checkpoints_dir_path, CHECKPOINT_FILE_PATH_FORMAT)
         checkpoint_callback = ModelCheckpoint(
@@ -389,7 +389,7 @@ def main():
         '-c',
         '--checkpoints_dir',
         type=str,
-        default='/ImagePTE1/ajoshi/code_farm/MRI-Reconstruction/submrine/submrine/train/trained_nets',
+        default='/ImagePTE1/ajoshi/code_farm/QRUnet/QRUnet/trained_nets/qr_' + str(CONST_Q),
         help='The base directory under which to store network checkpoints after each iteration')
 
     args = parser.parse_args()
